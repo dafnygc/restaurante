@@ -185,4 +185,33 @@ def distribuidora():
 
 # Executa o sistema da distribuidora
 distribuidora()
+import json
+import os
 
+class usuarios:
+    def __init__(self):
+        self.nome_arquivo = "usuario.json"
+        if os.path.exists(self.nome_arquivo ):
+            with open(self.nome_arquivo, "r") as arquivo:
+                self.listadeusuario = json.load(arquivo)
+        else: 
+            self.listadeusuario = {}
+
+    def gravaJson(self):
+        # Escreve os dados no arquivo JSON
+        with open(self.nome_arquivo, "w") as arquivo:
+            json.dump(self.self.listadeusuario, arquivo, indent=4)    
+
+
+    def cadrastrar(self):
+        usuario = input("Escolha um nome de usuário: ")
+        senha = input("Escolha uma senha: ")
+
+        # Zera o saldo do novo usuário
+        self.listadeusuario = {"usuario": usuario,
+                                "senha": senha,
+                                "saldo": 0.00,
+                                "pedidos": {} }
+        
+
+        
